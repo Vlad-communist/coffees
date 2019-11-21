@@ -9,9 +9,9 @@ class MyWidget(QMainWindow):
         super().__init__()
         uic.loadUi('main.ui', self)
         self.con = sqlite3.connect("coffee.sqlite")
-        self.setWindowTitle('Кофе')
-        self.update_result()
-        
+        self.pushButton.clicked.connect(self.update_result)
+        self.setWindowTitle('Телефонный справочник')
+
     def update_result(self):
         cur = self.con.cursor()
         self.tableWidget.setHorizontalHeaderLabels(['Id', 'Сорт', 'Степень обжарки', 'Молотый/В зёрнах', 'Описание вкуса', 'Цена', 'Объём упаковки'])
